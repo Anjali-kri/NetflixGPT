@@ -12,6 +12,9 @@
 -create signup use account in firebase
 -Implement sign and signup
 -created out redux store with userSlice
+-Bugfix: Sign up user displayName and profile picture update
+-Bugfix: Redirect functionality
+-unsubscribe to the onAuthStatechangeed callback
 
 # Features
 -Login/SignUp

@@ -4,15 +4,21 @@ import checkValidData from "../Utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth"; // Corrected import
 import { auth } from "../Utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../Utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
+  const navigate = useNavigate();
   const name = useRef(null);
   const email = useRef(null);
   const passWord = useRef(null);
+  const dispatch = useDispatch()
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
@@ -31,16 +37,32 @@ const Login = () => {
         auth,
         email.current.value,
         passWord.current.value
-      ) // corrected passing email and password values
+      ) 
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          updateProfile(user, {
+            displayName: name.current.value, 
+            photoURL: "https://avatars.githubusercontent.com/u/73298495?v=4"
+          }).then(() => {
+            const {uid, email, displayName, photoURL} = auth.currentUser;
+          dispatch(addUser({
+            uid: uid, 
+            email: email, 
+            displayName: displayName, 
+            photoURL: photoURL
+        }));
+            navigate("/browse");
+          }).catch((error) => {
+            setErrorMsg(error.errorMsg);
+          });
+          
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMsg(`${errorCode} - ${errorMessage}`);
         });
+
     } else {
       // Sign In logic
       signInWithEmailAndPassword(auth, email.current.value,
@@ -48,6 +70,8 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
+
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -55,6 +79,7 @@ const Login = () => {
           setErrorMsg(`${errorCode} - ${errorMessage}`);
 
         });
+
     }
   };
 

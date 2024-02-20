@@ -1,27 +1,27 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Header from './Header'
-import { DefaultHeaders } from '../Utils/constant'
-import { useDispatch } from 'react-redux'
-import { addNowPlayingMovies } from '../Utils/movieSlice'
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
+import MainContainer from './MainContainer';
+import Vediocontainer from './Vediocontainer';
+
 
 const Browse = () => {
 
-  const dispatch = useDispatch();
+  useNowPlayingMovies();
 
-  const getNOwPlayMovie = async() => {
-    const data = await fetch("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1", DefaultHeaders);
-    const json = await data.json();
-    dispatch(addNowPlayingMovies(json.results));
-    // console.log(json);
-  };
-  // console.log(getNOwPlayMovie);
-
-  useEffect(() => {
-    getNOwPlayMovie();
-  }, [])
   return (
     <div>
       <Header />
+      <MainContainer />
+      <Vediocontainer />
+      {/* <secondaryContainer /> */}
+      {/* mainContainer
+          - vedioBackground
+          - vedopTitle
+          secondary
+          - MovieList * n
+            - cards*n
+       */}
     </div>
   )
 }

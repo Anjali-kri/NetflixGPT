@@ -6,6 +6,7 @@ import VedioBackground from './VedioBackground';
 const MainContainer = () => {
     const movies = useSelector((store) => store.movie?.nowPlayingMovies);
     console.log(movies, "mlist");
+    // early return
     if(!movies) return;
     const mainMovie = movies[0];
     console.log(mainMovie, "list");

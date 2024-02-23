@@ -15,6 +15,9 @@
 -Bugfix: Sign up user displayName and profile picture update
 -Bugfix: Redirect functionality
 -unsubscribe to the onAuthStatechangeed callback
+-create trailer slice
+-crete custum component for trailer
+-fetch data for trailer
 
 # Features
 -Login/SignUp
@@ -30,3 +33,10 @@
 -NetflixGpt
     -Search Bar
     -MovieSuggestions
+
+# Maincontainer
+  - vedioBackground
+  - vedioTitle
+# SecondarConrainer
+  - MovieList * n
+  - cards * n

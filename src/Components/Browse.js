@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import MainContainer from './MainContainer';
-import Vediocontainer from './Vediocontainer';
+import SecondaryContainer from './SecondaryContainer';
 
 
 const Browse = () => {
@@ -13,7 +13,7 @@ const Browse = () => {
     <div>
       <Header />
       <MainContainer />
-      <Vediocontainer />
+      <SecondaryContainer />
       {/* <secondaryContainer /> */}
       {/* mainContainer
           - vedioBackground

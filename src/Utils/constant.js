@@ -13,3 +13,6 @@ export const Avatars = "https://avatars.githubusercontent.com/u/73298495?v=4";
             Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzAwYzFlMzY2MjY3NjI0YmZhYmM4OTQ0ZjcyMmY2MSIsInN1YiI6IjY1Y2Y0NzczZmRmOGI3MDE0OTY3MTJjZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jtGljFjT46p93XCVZEq7DOYTA_3LcExPwml-TNGFtLg",
         }
      };
+
+
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";

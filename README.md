@@ -18,6 +18,10 @@
 -create trailer slice
 -crete custum component for trailer
 -fetch data for trailer
+-build secondary component
+-Build movie list
+
+
 
 # Features
 -Login/SignUp

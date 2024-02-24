@@ -20,6 +20,7 @@
 -fetch data for trailer
 -build secondary component
 -Build movie list
+-GPT Search feature
 
 
 

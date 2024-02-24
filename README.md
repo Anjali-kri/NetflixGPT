@@ -21,6 +21,8 @@
 -build secondary component
 -Build movie list
 -GPT Search feature
+-Multilingual feature in app
+-integrate GPT apis
 
 
 

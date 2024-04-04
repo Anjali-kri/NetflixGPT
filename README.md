@@ -28,6 +28,7 @@
 
 # Features
 -Login/SignUp
+    
     -Sign In/Sign Up Form
     -Redirect the browser page
 -Browse (after authentication)

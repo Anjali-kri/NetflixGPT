@@ -1,0 +1,59 @@
+name: Run Tests, Build, and Auto-Merge
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+
+      - name: Install Dependencies
+        run: npm install
+
+  build:
+    name: Build Application
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Application
+        run: npm run build
+
+  merge:
+    name: Auto-Merge Pull Request
+    runs-on: windows-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Merge Pull Request
+        uses: pullreminders/automerge-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          merge-method: squash
